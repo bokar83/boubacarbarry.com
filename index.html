@@ -3,16 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Boubacar Barry  Human-First AI for Org Leaders</title>
+  <title>Boubacar Barry — Human-First AI for Org Leaders</title>
   <meta name="description" content="I help leaders build systems that scale people, not burn them out." />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#00B7C2" />
+  <meta name="color-scheme" content="light" />
 
   <!-- Canonical -->
   <link rel="canonical" href="https://boubacarbarry.com/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Boubacar Barry  Human-First AI for Org Leaders" />
+  <meta property="og:url" content="https://boubacarbarry.com/" />
+  <meta property="og:title" content="Boubacar Barry — Human-First AI for Org Leaders" />
   <meta property="og:description" content="I help leaders build systems that scale people, not burn them out." />
   <meta property="og:image" content="/public/og-image.png" />
   <meta property="og:image:width" content="1200" />
@@ -39,6 +43,20 @@
     }
   }
   </script>
+  <!-- FAQ JSON-LD (enable when ready) -->
+  <!--
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"What does human-first AI mean here?","acceptedAnswer":{"@type":"Answer","text":"Tools should reduce cognitive load and admin work. If they create more meetings or dashboards, we fix the system—not push harder on people."}},
+      {"@type":"Question","name":"How do engagements start?","acceptedAnswer":{"@type":"Answer","text":"Short audit → pilot with a small group → scale what works. Clear owners, simple metrics, no heroics."}},
+      {"@type":"Question","name":"Can you work with my internal team?","acceptedAnswer":{"@type":"Answer","text":"Yes. I pair with People Ops, Ops, or Product to build simple playbooks and leave them better than I found them."}}
+    ]
+  }
+  </script>
+  -->
 </head>
 <body>
   <a class="visually-hidden" href="#what-i-do">Skip to content</a>
@@ -46,20 +64,27 @@
   <header class="header container" role="banner">
     <div class="logo" aria-label="Boubacar Barry logo">BB</div>
     <nav aria-label="Main">
-      <a href="#what-i-do">What I Do</a>
-      <a href="#apps">Apps</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="#what-i-do" class="nav-link" data-nav="what-i-do">What I Do</a>
+      <a href="#apps" class="nav-link" data-nav="apps">Apps</a>
+      <a href="#about" class="nav-link" data-nav="about">About</a>
+      <a href="#contact" class="nav-link" data-nav="contact">Contact</a>
     </nav>
   </header>
 
   <main id="main">
     <section class="hero container" aria-labelledby="hero-title">
-      <h1 id="hero-title">Human-First AI for Org Leaders</h1>
-      <p>I help leaders build systems that scale people, not burn them out.</p>
-      <div class="cta-buttons">
-        <a href="mailto:bokar83@gmail.com" class="btn primary">Work With Me</a>
-        <a href="#apps" class="btn secondary">Explore My Tools</a>
+      <div class="hero-inner">
+        <h1 id="hero-title">Human-First AI for Org Leaders</h1>
+        <p class="subhead">I help leaders build systems that scale people, not burn them out.</p>
+        <div class="cta-buttons">
+          <a href="mailto:bokar83@gmail.com" class="btn primary">Work With Me</a>
+          <a href="#apps" class="btn secondary">Explore My Tools</a>
+        </div>
+        <ul class="chips" aria-label="How I help">
+          <li class="chip">Assess</li>
+          <li class="chip">Pilot</li>
+          <li class="chip">Scale</li>
+        </ul>
       </div>
     </section>
 
@@ -81,18 +106,58 @@
       </div>
     </section>
 
+    <section class="sectors container" aria-labelledby="sectors-title">
+      <h2 id="sectors-title" class="visually-hidden">Sectors</h2>
+      <ul class="chip-row" role="list">
+        <li class="chip solid">People Ops</li>
+        <li class="chip outline">Operations</li>
+        <li class="chip outline">Finance</li>
+        <li class="chip outline">Product</li>
+      </ul>
+    </section>
+
     <section id="apps" class="container" aria-labelledby="apps-title">
       <h2 id="apps-title">Featured Apps</h2>
       <p>Try the tools I actually use.</p>
-      <div class="grid">
-        <a href="https://convert.boubacarbarry.com/" class="card" aria-label="Open File Converter app">File Converter</a>
-        <!-- TODO: Add more app tiles -->
+      <div class="apps-grid">
+        <a href="https://convert.boubacarbarry.com/" class="app-card" aria-label="Open File Converter app">
+          <div class="app-icon" aria-hidden="true">⇆</div>
+          <div class="app-meta">
+            <h3>File Converter</h3>
+            <p>Fast, private conversions for docs, audio, and images.</p>
+          </div>
+        </a>
       </div>
     </section>
 
     <section id="about" class="container" aria-labelledby="about-title">
       <h2 id="about-title">About</h2>
-      <p>Im Boubacar Barry, a global HR leader turned builder. I help executives deploy human-first AI and simple systems that make work better. Less chaos, more clarity.</p>
+      <p>I’m Boubacar Barry, a global HR leader turned builder. I help executives deploy human-first AI and simple systems that make work better. Less chaos, more clarity.</p>
+    </section>
+
+    <section class="wins container" aria-labelledby="wins-title">
+      <h2 id="wins-title" class="visually-hidden">Wins</h2>
+      <ul class="wins-row" role="list">
+        <li><strong>72%</strong> faster onboarding docs</li>
+        <li><strong>~40hrs</strong> / month saved on reporting</li>
+        <li><strong>3x</strong> faster policy updates</li>
+      </ul>
+    </section>
+
+    <section id="faq" class="container" aria-labelledby="faq-title">
+      <h2 id="faq-title">FAQ</h2>
+      <details>
+        <summary>What does “human-first AI” mean here?</summary>
+        <p>Tools should reduce cognitive load and admin work. If they create more meetings or dashboards, we fix the system—not push harder on people.</p>
+      </details>
+      <details>
+        <summary>How do engagements start?</summary>
+        <p>Short audit → pilot with a small group → scale what works. Clear owners, simple metrics, no heroics.</p>
+      </details>
+      <details>
+        <summary>Can you work with my internal team?</summary>
+        <p>Yes. I pair with People Ops, Ops, or Product to build simple playbooks and leave them better than I found them.</p>
+      </details>
     </section>
 
     <section id="contact" class="container" aria-labelledby="contact-title">
@@ -107,9 +172,27 @@
   </main>
 
   <footer class="footer container" role="contentinfo">
-    <p> <span id="year"></span> Boubacar Barry. Built with care.</p>
+    <p>© <span id="year"></span> Boubacar Barry. Built with care.</p>
+    <p><small>No tracking. No cookies.</small></p>
   </footer>
 
+  <script>
+  (function(){
+    const links = Array.from(document.querySelectorAll('.nav-link'));
+    const ids = links.map(a => a.dataset.nav);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        const link = document.querySelector(`.nav-link[data-nav="${id}"]`);
+        if (link && entry.isIntersecting) {
+          links.forEach(l => l.removeAttribute('aria-current'));
+          link.setAttribute('aria-current', 'page');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+    ids.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
+  })();
+  </script>
   <script src="main.js"></script>
 </body>
 </html>
