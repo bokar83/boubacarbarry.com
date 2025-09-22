@@ -1,0 +1,15 @@
+﻿name: Link Check
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --no-progress --verbose --retry-wait-time 2 --max-redirects 5 .
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
