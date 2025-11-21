@@ -1,0 +1,65 @@
+<!-- Detected: Static HTML + CSS + vanilla JS -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Character &amp; Word Counter — Boubacar Barry</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <a class="visually-hidden" href="#main">Skip to content</a>
+  <header class="header container" role="banner">
+    <div class="logo" aria-label="Boubacar Barry logo">BB</div>
+    <nav aria-label="Main">
+      <a href="/index.html#what-i-do" class="nav-link">What I Do</a>
+      <a href="/index.html#apps" class="nav-link">Apps</a>
+      <a href="/index.html#about" class="nav-link">About</a>
+      <a href="/index.html#contact" class="nav-link">Contact</a>
+      <a href="/toolbox/" class="nav-link">Catalyst Toolbox</a>
+    </nav>
+  </header>
+
+  <main id="main" class="container">
+    <section class="tool-hero" aria-labelledby="counter-title">
+      <h1 id="counter-title">Character &amp; Word Counter</h1>
+      <p>Draft posts, prompts, and emails with live counts.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="counter-area">
+      <div class="input-group">
+        <label for="counter-input">Start typing</label>
+        <textarea id="counter-input" name="counter-input" placeholder="Write or paste your text here..."></textarea>
+      </div>
+      <div class="stats-grid" aria-live="polite">
+        <div class="stat-card">
+          <h4>Characters (with spaces)</h4>
+          <div class="stat-value" id="chars-with">0</div>
+        </div>
+        <div class="stat-card">
+          <h4>Characters (no spaces)</h4>
+          <div class="stat-value" id="chars-no">0</div>
+        </div>
+        <div class="stat-card">
+          <h4>Words</h4>
+          <div class="stat-value" id="words">0</div>
+        </div>
+        <div class="stat-card">
+          <h4>Lines</h4>
+          <div class="stat-value" id="lines">0</div>
+        </div>
+      </div>
+      <p class="hint">X: 280 characters. LinkedIn: aim for clarity within 200-300 words.</p>
+    </section>
+  </main>
+
+  <footer class="footer container" role="contentinfo">
+    <p>© <span id="year"></span> Boubacar Barry. Built with care.</p>
+    <p><small>No tracking. No cookies.</small></p>
+  </footer>
+
+  <script src="/main.js"></script>
+  <script src="/toolbox/character-counter/script.js"></script>
+</body>
+</html>

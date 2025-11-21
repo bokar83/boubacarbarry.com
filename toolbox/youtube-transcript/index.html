@@ -1,0 +1,60 @@
+<!-- Detected: Static HTML + CSS + vanilla JS -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YouTube Transcript Tool — Boubacar Barry</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <a class="visually-hidden" href="#main">Skip to content</a>
+  <header class="header container" role="banner">
+    <div class="logo" aria-label="Boubacar Barry logo">BB</div>
+    <nav aria-label="Main">
+      <a href="/index.html#what-i-do" class="nav-link">What I Do</a>
+      <a href="/index.html#apps" class="nav-link">Apps</a>
+      <a href="/index.html#about" class="nav-link">About</a>
+      <a href="/index.html#contact" class="nav-link">Contact</a>
+      <a href="/toolbox/" class="nav-link">Catalyst Toolbox</a>
+    </nav>
+  </header>
+
+  <main id="main" class="container">
+    <section class="tool-hero" aria-labelledby="yt-title">
+      <h1 id="yt-title">YouTube Transcript Tool</h1>
+      <p>Paste a YouTube URL to fetch or prepare a transcript for notes and prompts.</p>
+      <div class="form-stack">
+        <div class="input-group">
+          <label for="youtube-url">YouTube URL</label>
+          <input type="text" id="youtube-url" name="youtube-url" placeholder="https://www.youtube.com/watch?v=..." autocomplete="url" />
+        </div>
+        <div class="btn-row">
+          <button class="btn primary" id="fetch-btn" type="button">Get Transcript</button>
+          <span id="status" class="status" aria-live="polite">Idle</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="transcript-title">
+      <div class="btn-row" style="justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <h2 id="transcript-title">Transcript</h2>
+        <div class="btn-row">
+          <button class="btn secondary small" id="copy-btn" type="button">Copy Transcript</button>
+          <button class="btn secondary small" id="download-btn" type="button">Download .txt</button>
+        </div>
+      </div>
+      <div id="transcript" class="transcript-box" role="region" aria-live="polite">Paste a link and click “Get Transcript.”</div>
+    </section>
+  </main>
+
+  <footer class="footer container" role="contentinfo">
+    <p>© <span id="year"></span> Boubacar Barry. Built with care.</p>
+    <p><small>No tracking. No cookies.</small></p>
+  </footer>
+
+  <script src="/main.js"></script>
+  <script src="/toolbox/youtube-transcript/script.js"></script>
+</body>
+</html>

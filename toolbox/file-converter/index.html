@@ -1,0 +1,78 @@
+<!-- Detected: Static HTML + CSS + vanilla JS -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>File Converter — Boubacar Barry</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <a class="visually-hidden" href="#main">Skip to content</a>
+  <header class="header container" role="banner">
+    <div class="logo" aria-label="Boubacar Barry logo">BB</div>
+    <nav aria-label="Main">
+      <a href="/index.html#what-i-do" class="nav-link">What I Do</a>
+      <a href="/index.html#apps" class="nav-link">Apps</a>
+      <a href="/index.html#about" class="nav-link">About</a>
+      <a href="/index.html#contact" class="nav-link">Contact</a>
+      <a href="/toolbox/" class="nav-link">Catalyst Toolbox</a>
+    </nav>
+  </header>
+
+  <main id="main" class="container">
+    <section class="tool-hero" aria-labelledby="converter-title">
+      <h1 id="converter-title">File Converter</h1>
+      <p>Fast conversions for text and images. Audio and video coming soon.</p>
+      <div class="pill-row" aria-label="Supported conversions">
+        <span class="pill">.txt → .pdf</span>
+        <span class="pill">.md → .pdf</span>
+        <span class="pill">.png → .jpg</span>
+        <span class="pill">.jpg → .png</span>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="upload-title">
+      <h2 id="upload-title">Convert a file</h2>
+      <div class="form-stack">
+        <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Upload or drop a file">
+          <p><strong>Drop a file</strong> or click to browse.</p>
+          <p class="muted">Text: .txt, .md — Images: .png, .jpg, .jpeg</p>
+          <input type="file" id="file-input" class="visually-hidden" aria-hidden="true" />
+        </div>
+        <div class="input-group">
+          <label for="source-type">Source type</label>
+          <select id="source-type" name="source-type">
+            <option value="text">Text</option>
+            <option value="image">Image</option>
+            <option value="audio">Audio (coming soon)</option>
+            <option value="video">Video (coming soon)</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="target-format">Target format</label>
+          <select id="target-format" name="target-format"></select>
+        </div>
+        <div class="btn-row">
+          <button class="btn primary" id="convert-btn" type="button">Convert</button>
+          <span id="convert-status" class="status" aria-live="polite">Waiting for a file…</span>
+        </div>
+        <div id="format-note" class="notice" role="status" aria-live="polite" style="display:none;"></div>
+        <div class="result" aria-live="polite">
+          <div id="result-message" class="muted">No conversion yet.</div>
+          <a id="download-link" class="btn secondary small" href="#" style="display:none;">Download</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container" role="contentinfo">
+    <p>© <span id="year"></span> Boubacar Barry. Built with care.</p>
+    <p><small>No tracking. No cookies.</small></p>
+  </footer>
+
+  <script src="/main.js"></script>
+  <script src="/toolbox/file-converter/script.js"></script>
+</body>
+</html>
