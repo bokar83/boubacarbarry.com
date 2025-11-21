@@ -34,46 +34,59 @@ function extractVideoId(url) {
 }
 
 function fetchTranscript(videoId) {
-  const upstreamUrl = `https://r.jina.ai/http://youtubetranscript.com/?server_vid=${videoId}`;
-  return new Promise((resolve, reject) => {
-    https
-      .get(upstreamUrl, (res) => {
-        if (res.statusCode && res.statusCode >= 400) {
-          reject(new Error(`Upstream responded with status ${res.statusCode}`));
-          return;
-        }
+  // Uses the publicly accessible youtubetranscript.com endpoint (free) to retrieve transcript JSON
+  // Example: https://youtubetranscript.com/?format=json&lang=en&v=<VIDEO_ID>
+  const upstreamUrl = `https://youtubetranscript.com/?format=json&lang=en&v=${videoId}`;
 
+  return new Promise((resolve, reject) => {
+    const request = https.get(
+      upstreamUrl,
+      {
+        headers: {
+          // Some free endpoints require a User-Agent to avoid being blocked by anti-bot filters
+          'User-Agent': 'Mozilla/5.0 (compatible; TranscriptFetcher/1.0)'
+        }
+      },
+      (res) => {
         const chunks = [];
+
         res.on('data', (chunk) => chunks.push(chunk));
         res.on('end', () => {
           const raw = Buffer.concat(chunks).toString('utf-8');
-          // jina.ai returns plain text when fetching another URL; we expect JSON or text lines.
+
+          if (res.statusCode && res.statusCode >= 400) {
+            const reason = raw || `Upstream responded with status ${res.statusCode}`;
+            reject(new Error(reason));
+            return;
+          }
+
           try {
             const parsed = JSON.parse(raw);
+            if (!Array.isArray(parsed) || parsed.length === 0) {
+              reject(new Error('No transcript available for this video.'));
+              return;
+            }
+
             const transcriptText = parsed
               .map((entry) => entry.text)
-              .join(' ');
-            resolve(transcriptText.trim());
-            return;
-          } catch (err) {
-            // Fallback: attempt to strip markdown/HTML if jina.ai returned rendered content
-            const cleaned = raw
-              .replace(/```json|```/g, '')
-              .replace(/^\s*\[/, '[')
+              .filter(Boolean)
+              .join(' ')
               .trim();
-            try {
-              const parsed = JSON.parse(cleaned);
-              const transcriptText = parsed
-                .map((entry) => entry.text)
-                .join(' ');
-              resolve(transcriptText.trim());
-            } catch (parseErr) {
-              reject(new Error('Unable to parse transcript content'));
+
+            if (!transcriptText) {
+              reject(new Error('Transcript returned empty content.'));
+              return;
             }
+
+            resolve(transcriptText);
+          } catch (err) {
+            reject(new Error('Unable to parse transcript content'));
           }
         });
-      })
-      .on('error', (err) => reject(err));
+      }
+    );
+
+    request.on('error', (err) => reject(err));
   });
 }
 
@@ -154,13 +167,10 @@ const server = http.createServer(async (req, res) => {
           res.writeHead(200, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({ transcript: transcriptText }));
         } catch (fetchErr) {
+          const fallbackMessage =
+            'Transcript service is currently unavailable. Please try again later or copy captions directly from YouTube.';
           res.writeHead(502, { 'Content-Type': 'application/json' });
-          res.end(
-            JSON.stringify({
-              error:
-                'Transcript service is currently unavailable. Please try again later or copy captions directly from YouTube.'
-            })
-          );
+          res.end(JSON.stringify({ error: fetchErr?.message || fallbackMessage }));
         }
       } catch (err) {
         res.writeHead(400, { 'Content-Type': 'application/json' });
