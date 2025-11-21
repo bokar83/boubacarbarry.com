@@ -1,0 +1,14 @@
+{
+  "name": "boubacarbarry-site",
+  "version": "1.0.0",
+  "description": "Static site with toolkit utilities",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "echo 'No build necessary for static site'"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {}
+}
